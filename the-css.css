@@ -1,0 +1,3 @@
+.col { float:left; height: 53px; width:53px; box-shadow: inset 0 0 2px grey; background-size: 100%; color : green; font-size:40px; font-weight: bold; font-family: courier; text-align: center; }
+.row {  }
+#the-table { width: 1961px; }
