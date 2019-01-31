@@ -342,7 +342,7 @@ var places = [
         { 'image' : -1 }, 
         { 'image' : -1 }, 
         { 'image' : -3 }, 
-        { 'image' : -2 }, 
+        { 'image' : -3 }, 
         { 'image' : -1 }, 
         { 'image' : -1 }, 
         { 'image' : -3 }, 
