@@ -12,4 +12,4 @@ View the page here: https://bobspizza.github.io
 
 The symbols will appear if you comment out the content of the 'known' array in the JavaScript file in your local clone. 
 
-The big yellow symbols are "covert3". One artist was known. The other artist names were unknown, until the artwork was decoded.
+The big yellow symbols are "covert3". One artist was known, brainwaltzera. The other artist names were unknown, until the artwork was decoded.
