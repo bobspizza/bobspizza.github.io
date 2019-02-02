@@ -10,6 +10,8 @@ or, here is a link: https://raw.githubusercontent.com/bobspizza/bobspizza.github
 
 View the page here: https://bobspizza.github.io
 
+The big yellow symbols are "covert3". One artist was known, brainwaltzera. The other artist names were unknown, until the artwork was decoded.
+
 The symbols will appear if you comment out the content of the 'known' array in the JavaScript file in your local clone. 
 
-The big yellow symbols are "covert3". One artist was known, brainwaltzera. The other artist names were unknown, until the artwork was decoded.
+Red squares are obscured but definitely there. Blue squares are obscured and we don't know if something is there or not.
