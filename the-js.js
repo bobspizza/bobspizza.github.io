@@ -508,7 +508,9 @@ var places = [
     ],
 ];
 
-var known = [
+var map = [];
+
+var solution = [
     {
         'glyph' : 30,
         'char'  : 'c'
@@ -623,53 +625,102 @@ var known = [
     },
 ];
 
+
 $(document).ready(function(){
-    var rows =  $('.row');
-    
-    var i = 0;
-    
-    rows.each(function(){
-        var cols = $(this).children(".col");
-        
-        var j = 0;
-        
-        cols.each(function(){
-            if (places[i][j].image >= 0) {
-                var theChar = '';
-                
-                $.each(known, function(k, v){
-                    if (known[k].glyph == places[i][j].image) {
-                        theChar = known[k].char;
-                    }
+
+    var inputs = $(".control .col input");
+
+    $("#solve").click(function() {
+        map = solution;
+
+        doThing();
+    });
+
+    $("#reset").click(function() {
+        map = [];
+        doThing();
+    });
+
+    $('#apply').click(function(){
+        map = [];
+
+        var i = 0;
+        inputs.each(function(){
+            if ($(this).val() != '') {
+                map.push({
+                    glyph: i,
+                    char: $(this).val()
                 });
-                
-                if (theChar === "") {
-                    var filename = 'url(img/' + places[i][j].image.toString() + '.png)';
-                    
-                    $(this).css('background-image', filename);
-                } else {
-                    $(this).html(theChar);
-                }
-            } else {
-                switch (places[i][j].image) {
-                    case -1:    $(this).css('background-color', '#ddd');
-                                break;
-                    case -2:    $(this).css('background-color', '#ff9c93');
-                                break;
-                    case -3:    $(this).css('background-color', '#9191ff');
-                                break;
+            }
+            i++;
+        });
+
+        doThing();
+    });
+
+    function doThing() {
+        console.log(map);
+
+        // set inputs
+        var i = 0;
+        // for each input
+        inputs.each(function(){
+            $(this).val('');
+            // for each map item
+            for (var j = 0; j < map.length; j++) {
+                // if the map item is for this symbol
+                if (map[j].glyph == i) {
+                    $(this).val(map[j].char);
                 }
             }
+
+            i++;
+        });
+
+        // set backgrounds and content of the grid
+        var rows =  $('#the-table .row');
+        var i = 0;
+        rows.each(function(){
+            var cols = $(this).children("#the-table .col");
             
-            j++;
+            var j = 0;
+            
+            cols.each(function(){
+                // for the live places
+                if (places[i][j].image >= 0) {
+                    var theChar = '';
+                    
+                    $.each(map, function(k, v){
+                        if (map[k].glyph == places[i][j].image) {
+                            theChar = map[k].char;
+                        }
+                    });
+
+                    $(this).html(theChar);
+                    
+                    if (theChar === "") {
+                        var filename = 'url(img/' + places[i][j].image.toString() + '.png)';
+                        $(this).css('background-image', filename);
+                    } else {
+                        $(this).css('background-image', '');
+                    }
+                } else {
+                    switch (places[i][j].image) {
+                        case -1:    $(this).css('background-color', '#101f3e');
+                                    break;
+                        case -2:    $(this).css('background-color', '#ccc');
+                                    break;
+                        case -3:    $(this).css('background-color', '#333');
+                                    break;
+                    }
+                }
+                
+                j++;
+            });
+            
+            i++;
         });
-        
-        i++;
-    });
-    
-    $.each(places, function(i, row) {
-        $.each(row, function(j, col){
-            // console.log('i: ' + i + ', j: ' + j + ', image: ' + col.image);
-        });
-    });
+    }
+
+    doThing();
 });
